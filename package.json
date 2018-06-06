@@ -1,11 +1,19 @@
 {
-    "name": "hello-world",
+    "name": "giveth-dapp",
+    "productName": "Giveth",
+    "description": "Blockchain Platform for decentralized campaign and DAC",
     "version": "1.0.0",
     "main": "main.js",
+    "author": "InuitionMachine",
     "devDependencies": {
-        "electron": "^2.0.2"
+        "electron": "^2.0.2",
+        "electron-packager": "^12.1.0",
+        "electron-winstaller": "^2.6.4"
     },
-    "scripts":{
-        "start": "electron ."
+    "scripts": {
+        "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
+        "package-win": "electron-packager . giveth-dapp --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=IntuitionMachine --version-string.FileDescription=Giveth --version-string.ProductName=\"Giveth\"",
+        "package-linux": "electron-packager . giveth-dapp --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/1024x1024.png --prune=true --out=release-builds",
+        "create-installer-win": "node installers/windows/createinstaller.js"
     }
 }
